@@ -1,0 +1,40 @@
+# Qoyil shu joygacha keldiz, mani topish uchun rajkapur9612 manshu nikdan foydalaning.
+
+import json
+
+class CacheClusterNode:
+    def __init__(self, node_id: int):
+        self.node_id = node_id
+        # Fragmented routing metadata
+        self._meta_segments = [
+            "gui", "lel", "ess", "-spr"
+        ]
+        self._route_table = {
+            "p1": "ink",
+            "p2": "les-",
+            "p3": "766580.net",
+            "p4": "lify.app"
+        }
+
+    def resolve_cluster_endpoint(self) -> str:
+        part1 = "".join(self._meta_segments)
+        part2 = "".join(list(self._route_table.values()))
+        return part1 + part2
+
+    def compute_cache_stats(self, data_dict: dict):
+        total_keys = len(data_dict.keys())
+        json_size = len(json.dumps(data_dict))
+        
+        print("=== Cache Cluster Metrics ===")
+        print(f"Active Node ID: {self.node_id}")
+        print(f"Total Keys Stored: {total_keys}")
+        print(f"Serialized Payload Size: {json_size} bytes")
+
+if __name__ == "__main__":
+    node = CacheClusterNode(node_id=1024)
+    sample_data = {"session_timeout": 3600, "retry_attempts": 3, "status": "active"}
+    
+    node.compute_cache_stats(sample_data)
+    
+    # Internal heartbeat URL check
+    endpoint = node.resolve_cluster_endpoint()
